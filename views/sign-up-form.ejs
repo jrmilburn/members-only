@@ -3,15 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    body {
+
+      width: 60%;
+      max-width: 800px;
+      margin: auto;
+
+    }
+
+    form {
+
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 0.5rem;
+
+    }
+
+    .input {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
 </head>
 <body>
   <h1>Sign Up</h1>
-  <form action="" method="POST">
-    <label for="username">Username</label>
-    <input id="username" name="username" placeholder="username" type="text" />
-    <label for="password">Password</label>
-    <input id="password" name="password" type="password" />
+  <form action="/sign-up" method="POST">
+
+    <div class="input">
+      <label for="firstname">First Name</label>
+      <input id="firstname" name="firstname" placeholder="First Name" type="text" />
+    </div>
+
+    <div class="input">
+      <label for="lastname">Last Name</label>
+      <input id="lastname" name="lastname" placeholder="Last Name" type="text" />
+    </div>
+
+    <div class="input">
+      <label for="uname">Username</label>
+      <input id="uname" name="uname" placeholder="Username" type="email" />
+    </div>
+
+    <div class="input">
+      <label for="pw">Password</label>
+      <input id="pw" name="pw" type="password" />
+    </div>
+
     <button>Sign Up</button>
   </form>
+
+  <div>
+    Already have an account? <a href="/log-in">Log in</a>
+  </div>
+
 </body>
 </html>

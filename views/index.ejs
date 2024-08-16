@@ -1,8 +1,112 @@
 <html>
-    <head>
-        <title>Hello</title>
-    </head>
-    <body>
-        Hello world!
-    </body>
+  <head>
+    <title></title>
+    <style>
+              body {
+
+                width: 60%;
+                max-width: 800px;
+                margin: auto;
+
+              }
+
+              .message {
+
+                width: 100%;
+                padding: 2rem;
+                border-radius: 1rem;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+                border: 1px solid #ccc;
+                position: relative;
+
+                margin: 0.5rem;
+              }
+
+              .message h3 {
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: rgba(0, 0, 0, 0.6);
+                scale: 0.8;
+                background-color: white;
+                padding: 0.25rem;
+                border-radius: 0.25rem;
+                border: 1px solid #ccc;
+
+                transform: translate(0%, -110%);
+
+              }
+
+              .message p {
+                font-size: 1.5em;
+              }
+
+              .messages {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+              }
+
+              .footer {
+                display: flex;
+                justify-content: space-between;
+                margin: 1rem;
+              }
+
+              .accounts {
+                display: flex;
+                gap: 1rem;
+              }
+    </style>
+  </head>
+  <body>
+    
+    <% if(user) { %>
+      <div class="logged-in">
+        <h3>Logged in as <%= user.firstname %></h3>
+      </div>
+    <% } else { %>
+      <h3>Logged out</h3>
+    <% } %>
+
+    <div class="messages">
+      <% if(messages.length > 0) { %>
+        <% messages.forEach((message) => { %>
+          <div class="message">
+            <% if(user) { %>
+              <h3><%= message.username %></h3>
+            <% } else { %>
+              <h3>Anonymous</h3>
+            <% } %>
+            
+            <p><%= message.message %></p>
+            <% if(user && user.isadmin) { %>
+              <a href="/<%= message.id %>/delete">Delete</a>
+            <% } %>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <h3>No messages found :(</h3>
+      <% } %>
+    </div>
+
+    
+    <div class="footer">
+      <div class="accounts">
+        <% if(user){ %>
+          <a href="/log-out">Log out</a>
+        <% } else { %>
+          <a href="/sign-up">Sign Up</a>
+          <a href="/log-in">Log in</a>
+        <% } %>
+      
+      </div>
+      <div class="create">
+        <% if(user){ %>
+          <a href="/new-message">New Message</a>
+        <% } %>
+      </div>
+    </div>
+
+  </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+        body {
+
+            width: 60%;
+            max-width: 800px;
+            margin: auto;
+
+        }
+
+        form {
+            
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 0.5rem;
+            
+        }
+
+        .input {
+            display: flex;
+            justify-content: space-between;
+        }
+  </style>
+</head>
+<body>
+  <% if (user) {%>
+        <h1>Welcome back <%= user.username %></h1>
+    <a href="/log-out">LOG OUT</a>
+  <% } else { %>
+    <h1>Log in</h1>
+    <form action="/log-in" method="POST">
+
+      <div class="input">
+          <label for="username">Username</label>
+          <input id="username" name="username" placeholder="username" type="email" />
+      </div>
+      
+      <div class="input">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" />
+      </div>
+
+      <button>Log In</button>
+
+      <div>
+        Don't have an account? <a href="/sign-up">Sign Up</a>
+    </div>
+    </form>
+  <%}%>
+</body>
+</html>

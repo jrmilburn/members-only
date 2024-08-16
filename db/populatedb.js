@@ -10,11 +10,9 @@ const userSQL = `
         firstName VARCHAR(255),
         lastName VARCHAR(255),
         username VARCHAR(255),
-        password VARCHAR(255)
+        password VARCHAR(255),
+        isAdmin BOOLEAN DEFAULT FALSE
     );
-
-    INSERT INTO users (firstName, lastName, username, password)
-    VALUES ('Joe', 'Milburn', 'jrmilburn@outlook.com', 'password');
 `;
 
 const messageSQL = `
@@ -24,9 +22,6 @@ const messageSQL = `
         userId INTEGER,
         FOREIGN KEY (userId) REFERENCES users(id)
     );
-
-    INSERT INTO messages(message, userId)
-    VALUES ('Hello world!', 1);
 `;
 
 async function main() {
